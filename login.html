@@ -2,18 +2,107 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-widthm, initial-scale=1.0"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-        <title>PureTech - Password restoration</title>
+        <title>PureTech - Password update</title>
         <link rel="icon" href="https://raw.githubusercontent.com/mklpentest/M01-EAC01/main/puretechicon.jpg" type="image/jpeg"/>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+            body{
+                background-color: #f9f9f9;
+                padding: 50px 0;
+                font-size: 18px;
+                font-family: "Roboto", sans-serif;
+            }
+
+            section p{
+                margin-inline: auto;
+                max-width: 350px;
+                text-align: center;
+            }
+
+            .passwordRules{
+                color: #0c5db0;
+                font-size: 14px;
+            }
+
+            form{
+                
+                margin-inline: auto;
+                max-width: 320px;
+                padding: 50px 0 50px 0;
+                display: flex;
+                flex-direction: column;
+            }
+
+            form input{
+                font-family: inherit;
+                font-size: 18px;
+                margin-bottom: 10px;
+                padding: 10px 20px;
+                border-radius: 20px;
+                border: 1px solid #0c5db0;
+                outline:none;
+            }
+
+            form input:focus{
+                border: 2px solid #0c5dd0;
+                
+            }
+
+            form button{
+                border: none;
+                padding: 10px 20px;
+                border-radius: 20px;
+                margin-top: 10px;
+                color: #ffffff;
+                background-color: #0c5db0;
+                font-family: inherit;
+                font-size: 18px;
+            }
+
+            form button:hover{
+                cursor:pointer;
+            }
+
+            .imageContainer{
+                margin-inline: auto;
+                max-width: 320px;
+            }
+
+            .imageContainer img{
+                width: 100%;
+                height: auto;
+                fit-content: cover;
+            }
+        
+        </style>
     </head>
     <body>
         <main>
-            <form method="POST" action="">
-                <input type="text" name="username" placeholder="Usuario"/>
-                <input type="password" name="password" placeholder="Contraseña"/>
-                <button type="submit">Iniciar sesión</button>
-            </form>
+            <header>
+                <div class="imageContainer">
+                    <img src="https://raw.githubusercontent.com/mklpentest/M01-EAC01/main/puretechlogo.jpg" alt="Puretech logo image" />
+                </div>
+            </header>
+            <section>
+                <p>
+                    {{.FirstName}}, Please reset your password by filling out the form below.                    
+                </p>
+                <p class="passwordRules">
+                        The new password must be at least 12 characters long and include numbers, lowercase and uppercase letters, and at least one symbol.
+                </p>
+            </section>
+            <section>
+                <form method="POST" action="">
+                    <input type="text" name="username" placeholder="Email"/>
+                    <input type="password" name="oldpassword" placeholder="Old Password"/>
+                    <input type="password" name="newpassword" placeholder="New Password"/>
+                    <input type="password" name="validnewpassword" placeholder="Confirm new password"/>
+                    <button type="submit">Update password</button>
+                </form>
+            </section>
+            
         </main>
 
     </body>
