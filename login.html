@@ -105,6 +105,44 @@
             
         </main>
 
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const form = document.querySelector('form');
+                const newPassword = form.querySelector('input[placeholder="New Password"]');
+                const confirmPassword = form.querySelector('input[placeholder="Confirm new password"]');
+                if(!newPassword || !confirmPassword){
+                    console.error('No fields!!');
+                }
+
+                // Error message
+                const errorMessage = document.createElement('p');
+                errorMessage.style.color = '#c0392b';
+                errorMessage.style.fontSize = '14px';
+                errorMessage.style.textAlign = 'center';
+                errorMessage.style.margin = '10px 0 0 0';
+                form.appendChild(errorMessage);
+
+                // Validation
+                const passwordRules = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{12,}$/;
+
+                form.addEventListener('submit', function(event){
+                    errorMessage.textContent = '';
+
+                    if(!passwordRules.test(newPassword.value)){
+                        event.preventDefault();
+                        errorMessage.textContent = 'Password must be at least 12 characters long and include numbers, lowercase and uppercase letters, and at least one symbol.';
+                        return;
+                    }
+
+                    if(newPassword.value !== confirmPassword.value){
+                        event.preventDefault();
+                        errorMessage.textContent = 'The passwords do not match.';
+                        confirmPassword.focus();
+                        return;
+                    }
+                })
+            })
+        </script>
     </body>
 </html>
 
